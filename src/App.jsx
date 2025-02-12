@@ -1,12 +1,14 @@
 import Form from "./Components/Form";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    <>
-      <div className="flex flex-col justify-center items-center bg-dark h-screen text-white">
+    <div className=" h-full box-border text-white">
+      <Navbar />
+      <div className="flex flex-col justify-center items-center">
         <Form />
       </div>
-    </>
+    </div>
   );
 }
 
