@@ -45,7 +45,7 @@ const Form = () => {
               onClick={() =>
                 setTicketData({ ...ticketData, ticketType: "Regular" })
               }
-              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer text-center"
+              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer"
             >
               <h2 className="font-semibold text-lg sm:text-xl">Free</h2>
               <h4 className="uppercase text-sm sm:text-base">Regular Access</h4>
@@ -56,7 +56,7 @@ const Form = () => {
               onClick={() =>
                 setTicketData({ ...ticketData, ticketType: "VIP" })
               }
-              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer text-center"
+              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer"
             >
               <h2 className="font-semibold text-lg sm:text-xl">$150</h2>
               <h4 className="uppercase text-sm sm:text-base">VIP Access</h4>
@@ -67,7 +67,7 @@ const Form = () => {
               onClick={() =>
                 setTicketData({ ...ticketData, ticketType: "VVIP" })
               }
-              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer text-center"
+              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer"
             >
               <h2 className="font-semibold text-lg sm:text-xl">$150</h2>
               <h4 className="uppercase text-sm sm:text-base">VVIP Access</h4>

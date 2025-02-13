@@ -2,21 +2,20 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { CloudArrowDownIcon } from "@heroicons/react/24/outline";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {useFormContent} from '../Context/FormContent';
+import { useFormContent } from "../Context/FormContent";
 
 const Attendee = () => {
   const navigate = useNavigate();
-  const {setFormData} = useFormContent()
+  const { setFormData } = useFormContent();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-   
   const onSubmit = (data) => {
     console.log("Form Data:", data);
-    setFormData(data)
+    setFormData(data);
     navigate("/ticket");
   };
 
@@ -39,21 +38,27 @@ const Attendee = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border border-liner p-4 sm:p-6 mx-2 sm:mx-4 mt-4 rounded-[20px] bg-[#08252B] w-full"
       >
- 
         <div className="bg-[#052228] flex flex-col justify-center items-center py-4 px-5 sm:py-5 sm:px-7 rounded-[20px]">
           <h2 className="flex self-start text-white">Upload Profile Photo</h2>
           <div className="relative flex justify-center items-center bg-[#08171a] w-full h-42 mt-7">
-            <div className="border-4 border-[#24A0B5] bg-[#0E464F] flex flex-col justify-center items-center h-52 rounded-4xl cursor-pointer">
+            <div
+              className="border-4 border-[#24A0B5] bg-[#0E464F] flex flex-col justify-center items-center h-52 rounded-4xl cursor-pointer"
+              onClick={() => document.getElementById("fileInput").click()}
+            >
               <CloudArrowDownIcon className="w-6 h-6" />
               <h2 className="text-center text-[16px] w-52">
                 Drag & drop or click to upload
               </h2>
               <input
+                id="fileInput"
                 type="file"
                 {...register("profilePhoto", {
                   required: "Profile photo is required",
                 })}
                 className="hidden"
+                onChange={(e) =>
+                  console.log("selected file", e.target.files[0])
+                }
               />
             </div>
           </div>
@@ -65,11 +70,9 @@ const Attendee = () => {
         </div>
         <hr className="bg-[#07373F] border-none h-1 my-5" />
 
-     
         <div className="flex flex-col my-3">
-      
           <label className="text-sm sm:text-base mb-1">Enter your name</label>
-          <input 
+          <input
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
             type="text"
             aria-label="Enter your name"
@@ -79,12 +82,10 @@ const Attendee = () => {
             <p className="text-red-500 text-sm mb-4">{errors.name.message}</p>
           )}
 
-         
           <label className="text-sm sm:text-base mb-1">
             Enter your email *
           </label>
           <input
-  
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
             type="email"
             placeholder="hello@avioflagos.io"
@@ -101,7 +102,6 @@ const Attendee = () => {
             <p className="text-red-500 text-sm mb-4">{errors.email.message}</p>
           )}
 
-       
           <label className="text-sm sm:text-base mb-2">Special request?</label>
           <textarea
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
@@ -110,7 +110,7 @@ const Attendee = () => {
             {...register("request")}
           />
         </div>
- 
+
         <div className="flex flex-col sm:flex-row justify-between w-full gap-3">
           <button
             type="button"
@@ -121,7 +121,6 @@ const Attendee = () => {
           </button>
           <button
             type="submit"
-          
             className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
           >
             Get My Free Ticket

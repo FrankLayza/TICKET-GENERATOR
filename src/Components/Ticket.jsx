@@ -42,30 +42,30 @@ const Ticket = () => {
             </div>
 
             <div></div>
-            <div className="grid grid-cols-2  bg-[#08343C] rounded-md">
+            <div className="grid grid-cols-2 border border-[#133D44] bg-[#08343C] rounded-md">
               <div className="border border-[#12464E] border-l-0 border-t-0 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E]">
                   Enter your name
                 </p>
-                <p>{formData.name}</p>
+                <p className="text-xs">{formData.name}</p>
               </div>
               <div className=" border border-[#12464E] border-r-0 border-t-0 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E] ">
                   Enter your email *
                 </p>
-                <p>{formData.email}</p>
+                <p className="text-xs">{formData.email}</p>
               </div>
               <div className="border border-[#12464E] border-l-0 border-t-0 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E]">
                   Ticket type:
                 </p>
-                <p>{ticketData.ticketType}</p>
+                <p className="text-xs">{ticketData.ticketType}</p>
               </div>
               <div className="border border-[#12464E] border-t-0 border-r-0 px-2 py-2 ">
                 <p className="text-[10px] font-roboto text-[#12464E]">
                   Ticket for:
                 </p>
-                <p>{ticketData.ticketCount}</p>
+                <p className="text-xs">{ticketData.ticketCount}</p>
               </div>
               <div className="col-end-2 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E]">
