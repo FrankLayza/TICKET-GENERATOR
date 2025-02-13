@@ -1,15 +1,17 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import {useFormContent} from '../Context/FormContent'; 
+import { useFormContent } from "../Context/FormContent";
 const Ticket = () => {
+  const { formData } = useFormContent();
+  const {ticketData} = useFormContent();
   return (
-    <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-3 w-full max-w-[604px] mx-auto">
+    <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-9 w-full max-w-[604px] mx-auto">
       <div className="my-3 flex justify-between items-center w-full px-4">
         <h2 className="font-jeju text-xl sm:text-2xl">Ready</h2>
         <p className="text-sm sm:text-base">Step 1/3</p>
       </div>
 
       <ProgressBar
-        completed={99.3}
+        completed={75.3}
         customLabel=" "
         maxCompleted={100}
         width="550px"
@@ -18,15 +20,62 @@ const Ticket = () => {
       />
 
       <div className="my-7">
-        <h2 className="text-center text-3xl sm:text-4xl mb-2">
+        <h2 className="text-center font-alat text-3xl sm:text-4xl mb-2">
           Your Ticket is Booked!
         </h2>
-        <span className="text-[16px]">
+        <span className="text-[16px] font-roboto">
           Check your email for a copy or you can <a href="">download</a>
         </span>
       </div>
 
-      <div className="max-w-[300px] h-[600px] relative rounded-[20px] path w-full mx-auto border border-liner"></div>
+      <div className="flex flex-col justify-center items-center p-6  w-full bg-linear-to-b from-[#083439] to-[#083439]"  >
+        <div className="max-w-[300px] h-[600px]  rounded-[20px] path w-full mx-auto border border-liner p-4 md:p-0 ">
+          <div className="max-w-[260px] w-full h-[446px] border border-[#24A0B5] mx-auto mt-5 rounded-[16px] p-2 ">
+            <div className="  flex flex-col justify-center items-center py-4 px-5 sm:py-5 sm:px-7 rounded-[20px]">
+              <h2 className="text-center text-3xl sm:text-4xl leading-tight font-rage">
+                Techember Fest &rdquo;25
+              </h2>
+              <p className="text-center text-xs">
+                04 Rumens road, Ikoyi, Lagos
+              </p>
+              <p className="text-center text-xs">March 15, 2025 || 7:00PM</p>
+            </div>
+
+            <div></div>
+            <div className="grid grid-cols-2  bg-[#08343C] rounded-md">
+              <div className="border border-[#12464E] border-l-0 border-t-0 px-2 py-2">
+                <p className="text-[10px] font-roboto text-[#12464E]">
+                  Enter your name
+                </p>
+                <p>{formData.name}</p>
+              </div>
+              <div className=" border border-[#12464E] border-r-0 border-t-0 px-2 py-2">
+                <p className="text-[10px] font-roboto text-[#12464E] ">
+                  Enter your email *
+                </p>
+                <p>{formData.email}</p>
+              </div>
+              <div className="border border-[#12464E] border-l-0 border-t-0 px-2 py-2">
+                <p className="text-[10px] font-roboto text-[#12464E]">
+                  Ticket type:
+                </p>
+                <p>{ticketData.ticketType}</p>
+              </div>
+              <div className="border border-[#12464E] border-t-0 border-r-0 px-2 py-2 ">
+                <p className="text-[10px] font-roboto text-[#12464E]">
+                  Ticket for:
+                </p>
+                <p>{ticketData.ticketCount}</p>
+              </div>
+              <div className="col-end-2 px-2 py-2">
+                <p className="text-[10px] font-roboto text-[#12464E]">
+                  Special request?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -69,7 +69,7 @@ const Attendee = () => {
         <div className="flex flex-col my-3">
       
           <label className="text-sm sm:text-base mb-1">Enter your name</label>
-          <input
+          <input 
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
             type="text"
             aria-label="Enter your name"
@@ -84,6 +84,7 @@ const Attendee = () => {
             Enter your email *
           </label>
           <input
+  
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
             type="email"
             placeholder="hello@avioflagos.io"
@@ -120,7 +121,7 @@ const Attendee = () => {
           </button>
           <button
             type="submit"
-            onClick={() => navigate('/ticket')}
+          
             className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
           >
             Get My Free Ticket
