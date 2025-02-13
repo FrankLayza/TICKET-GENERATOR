@@ -2,23 +2,26 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { CloudArrowDownIcon } from "@heroicons/react/24/outline";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import {useFormContent} from '../Context/FormContent';
 
 const Attendee = () => {
   const navigate = useNavigate();
+  const {setFormData} = useFormContent()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  // Form submission handler
+   
   const onSubmit = (data) => {
     console.log("Form Data:", data);
-    navigate("/generate");
+    setFormData(data)
+    navigate("/ticket");
   };
 
   return (
-    <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-3 w-full max-w-[604px] mx-auto">
+    <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-9 w-full max-w-[604px] mx-auto">
       <div className="my-3 flex justify-between items-center w-full px-4">
         <h2 className="font-jeju text-xl sm:text-2xl">Attendee details</h2>
         <p className="text-sm sm:text-base">Step 2/3</p>
@@ -36,7 +39,7 @@ const Attendee = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border border-liner p-4 sm:p-6 mx-2 sm:mx-4 mt-4 rounded-[20px] bg-[#08252B] w-full"
       >
-        {/* Profile Photo Upload */}
+ 
         <div className="bg-[#052228] flex flex-col justify-center items-center py-4 px-5 sm:py-5 sm:px-7 rounded-[20px]">
           <h2 className="flex self-start text-white">Upload Profile Photo</h2>
           <div className="relative flex justify-center items-center bg-[#08171a] w-full h-42 mt-7">
@@ -62,21 +65,21 @@ const Attendee = () => {
         </div>
         <hr className="bg-[#07373F] border-none h-1 my-5" />
 
-        {/* Attendee Details */}
+     
         <div className="flex flex-col my-3">
-          {/* Name Field */}
+      
           <label className="text-sm sm:text-base mb-1">Enter your name</label>
           <input
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
             type="text"
             aria-label="Enter your name"
-            {...register("name", { required: "Name is required" })}
+            {...register("name", { required: "Please enter your name" })}
           />
           {errors.name && (
             <p className="text-red-500 text-sm mb-4">{errors.name.message}</p>
           )}
 
-          {/* Email Field */}
+         
           <label className="text-sm sm:text-base mb-1">
             Enter your email *
           </label>
@@ -86,7 +89,7 @@ const Attendee = () => {
             placeholder="hello@avioflagos.io"
             aria-label="Enter your email"
             {...register("email", {
-              required: "Email is required",
+              required: "Please enter your email address",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                 message: "Invalid email format",
@@ -97,7 +100,7 @@ const Attendee = () => {
             <p className="text-red-500 text-sm mb-4">{errors.email.message}</p>
           )}
 
-          {/* Special Request Field */}
+       
           <label className="text-sm sm:text-base mb-2">Special request?</label>
           <textarea
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
@@ -106,8 +109,7 @@ const Attendee = () => {
             {...register("request")}
           />
         </div>
-
-        {/* Confirm Buttons */}
+ 
         <div className="flex flex-col sm:flex-row justify-between w-full gap-3">
           <button
             type="button"
@@ -118,6 +120,7 @@ const Attendee = () => {
           </button>
           <button
             type="submit"
+            onClick={() => navigate('/ticket')}
             className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
           >
             Get My Free Ticket

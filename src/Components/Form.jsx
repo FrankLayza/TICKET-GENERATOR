@@ -12,7 +12,7 @@ const Form = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-3 w-full max-w-[604px] mx-auto">
+    <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-9 w-full max-w-[604px] mx-auto">
       <div className="my-3 flex justify-between items-center w-full px-4">
         <h2 className="font-jeju text-xl sm:text-2xl">Ticket selection</h2>
         <p className="text-sm sm:text-base">Step 1/3</p>
@@ -33,8 +33,7 @@ const Form = () => {
         </div>
 
         <hr className="bg-[#07373F] border-none h-1 my-4" />
-
-        {/* selecting ticket type  */}
+ 
         <div className="w-full mb-3">
           <p className="self-start flex mb-2 text-sm sm:text-base capitalize">Select ticket type:</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-[#052228] border border-[#07373f] w-full p-3 rounded-[24px]">
@@ -70,7 +69,7 @@ const Form = () => {
           </div>
         </div>
 
-        {/* Number of tickets */}
+        
         <div className="flex flex-col my-3">
           <label className="text-sm sm:text-base mb-1">Number of tickets</label>
           <select
@@ -86,7 +85,7 @@ const Form = () => {
           </select>
         </div>
 
-        {/* Confirm buttons */}
+    
         <div className="flex flex-col sm:flex-row justify-between w-full gap-3">
           <button className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5] active:bg-[#24A0B5]">
             Cancel
