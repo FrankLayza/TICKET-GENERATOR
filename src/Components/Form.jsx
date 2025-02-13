@@ -77,7 +77,7 @@ const Form = () => {
             className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base"
             value={ticket}
             onChange={(e) => setTicket(Number(e.target.value))}
-          >
+          required>
             {Array.from({ length: 20 }, (_, i) => i + 1).map((num, index) => (
               <option key={index} value={num}>
                 {num}
