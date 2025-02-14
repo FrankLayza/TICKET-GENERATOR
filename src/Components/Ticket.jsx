@@ -1,6 +1,8 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useFormContent } from "../Context/FormContent";
 import { useNavigate } from "react-router-dom";
+import Bar from "../assets/bar.png";
+import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 const Ticket = () => {
   const { formData } = useFormContent();
   const { ticketData } = useFormContent();
@@ -37,10 +39,14 @@ const Ticket = () => {
               <h2 className="text-center text-3xl sm:text-4xl leading-tight font-rage">
                 Techember Fest &rdquo;25
               </h2>
-              <p className="text-center text-xs">
-                04 Rumens road, Ikoyi, Lagos
+              <p className="flex items-center gap-2 text-center text-xs">
+                <FaMapMarkerAlt className="text-red-700" /> 04 Rumens road,
+                Ikoyi, Lagos
               </p>
-              <p className="text-center text-xs">March 15, 2025 || 7:00PM</p>
+              <p className="flex items-center gap-2 text-center text-xs">
+                <FaCalendarAlt className="text-red-700" /> March 15, 2025 ||
+                7:00PM
+              </p>
             </div>
 
             <div className="w-32 h-32 overflow-hidden mb-4 mx-auto border-5 border-[#7efcfc] rounded-2xl">
@@ -55,13 +61,13 @@ const Ticket = () => {
                 <p className="text-[10px] font-roboto text-[#12464E]">
                   Enter your name
                 </p>
-                <p className="text-xs">{formData.name}</p>
+                <p className="text-xs break-words">{formData.name}</p>
               </div>
               <div className=" border border-[#12464E] border-r-0 border-t-0 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E] ">
                   Enter your email *
                 </p>
-                <p className="text-xs w-xs">{formData.email}</p>
+                <p className="text-xs break-words">{formData.email}</p>
               </div>
               <div className="border border-[#12464E] border-l-0 border-t-0 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E]">
@@ -73,15 +79,18 @@ const Ticket = () => {
                 <p className="text-[10px] font-roboto text-[#12464E]">
                   Ticket for:
                 </p>
-                <p className="text-xs">{ticketData.ticketCount}</p>
+                <p className="text-xs break-words">{ticketData.ticketCount}</p>
               </div>
               <div className="col-end-2 px-2 py-2">
                 <p className="text-[10px] font-roboto text-[#12464E]">
                   Special request?
                 </p>
-                <p className="text-xs">{formData.request}</p>
+                <p className="text-xs overflow-hidden  ">{formData.request}</p>
               </div>
             </div>
+          </div>
+          <div className="flex justify-center items-center mt-4 h-28 border-t-2 border-dashed border-[#00eaff]">
+            <img src={Bar} alt="" />
           </div>
         </div>
       </div>
@@ -93,7 +102,7 @@ const Ticket = () => {
           Book Another Ticket
         </button>
         <button
-          onClick={() => navigate("/generate")}
+          onClick={() => navigate("/")}
           className="border border-[#24A0B5] font-jeju font-light text-[#24A0B5] hover:text-white w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5] active:bg-[#24A0B5]"
         >
           Download Ticket

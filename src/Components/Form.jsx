@@ -1,6 +1,7 @@
 import { useFormContent } from "../Context/FormContent";
 import { useNavigate } from "react-router-dom";
 import ProgressBar from "@ramonak/react-progress-bar";
+import {FaMapMarkerAlt} from 'react-icons/fa';
 const Form = () => {
   const navigate = useNavigate();
   const { ticketData, setTicketData } = useFormContent();
@@ -33,8 +34,8 @@ const Form = () => {
             Join us for an unforgettable experience at [Event Name]! Secure your
             spot now.
           </p>
-          <p className="text-sm sm:text-base">
-            [Event Location] || March 15, 2025 | 7:00PM
+          <p className="flex items-center text-sm sm:text-base">
+            <FaMapMarkerAlt className="text-red-600" />   [Event Location] || March 15, 2025 | 7:00PM
           </p>
         </div>
 

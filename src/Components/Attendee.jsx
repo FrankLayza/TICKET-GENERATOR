@@ -37,7 +37,7 @@ const Attendee = () => {
     } else {
       console.log("form data", data);
       setFormData(data);
-      navigate('/ticket')
+      navigate("/ticket");
     }
   };
 
