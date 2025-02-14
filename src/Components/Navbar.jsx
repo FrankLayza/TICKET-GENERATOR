@@ -4,26 +4,28 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="border border-[#197686] flex justify-between items-center rounded-3xl font-jeju mx-18 my-6 px-5 py-2">
-      <div className="mr-2 sm:mr-0">
-        <img src={Ticz} alt="" className="w-10 h-10 " />
+    <div className="border border-[#197686] flex items-center justify-between rounded-3xl font-jeju mx-4 my-4 px-4 py-2 sm:px-5 sm:py-3">
+      <div className="mr-auto">
+        <img src={Ticz} alt="Logo" className="w-10 h-10" />
       </div>
-      <div className="mx-2 hidden md:block">
+      <div className="hidden md:block">
         <ul className="flex text-[#b3b3b3]">
           <NavLink to="/" className="mx-3">
-            <a href="">Events</a>
+            Events
           </NavLink>
           <NavLink to="/ticket" className="mx-3">
-            <a href="">My Tickets</a>
+            My Tickets
           </NavLink>
-          <NavLink className="mx-3">
-            <a href="">About Project</a>
+          <NavLink to="/about" className="mx-3">
+            About Project
           </NavLink>
         </ul>
       </div>
-      <button className="flex items-center bg-white  px-5 py-3 rounded-xl text-[#0A0C11]">
-        MY TICKETS <FaArrowRight className="ml-2" />
-      </button>
+      <div className="ml-auto">
+        <button className="flex items-center bg-white px-4 py-2 sm:px-5 sm:py-3 rounded-xl text-[#0A0C11]">
+          MY TICKETS <FaArrowRight className="ml-2" />
+        </button>
+      </div>
     </div>
   );
 };
