@@ -4,6 +4,10 @@ import ProgressBar from "@ramonak/react-progress-bar";
 const Form = () => {
   const navigate = useNavigate();
   const { ticketData, setTicketData } = useFormContent();
+
+  const changeColor = (type) => {
+    return ticketData.ticketType === type ? "bg-[#1f464e]" : "bg-[#0c2228]";
+  };
   return (
     <div className="flex flex-col justify-center items-center rounded-[20px] border border-liner p-9 w-full max-w-[604px] mx-auto">
       <div className="my-3 flex justify-between items-center w-full px-4">
@@ -21,7 +25,7 @@ const Form = () => {
       />
 
       <div className="border border-liner p-4 sm:p-6 mx-2 sm:mx-4 mt-3 rounded-[20px] bg-[#08252B] w-full">
-        <div className="bg-[#07373F] flex flex-col justify-center items-center py-4 px-5 sm:py-5 sm:px-7 rounded-[20px]">
+        <div className="bg-linear-to-r from-[#173740] to-[#0d242a] border border-[#15333a] flex flex-col justify-center items-center py-4 px-5 sm:py-5 sm:px-7 rounded-[20px]">
           <h2 className="text-center text-3xl sm:text-4xl leading-tight font-rage">
             Techember Fest &rdquo;25
           </h2>
@@ -42,10 +46,15 @@ const Form = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-[#052228] border border-[#07373f] w-full p-3 rounded-[24px]">
             <div
-              onClick={() =>
-                setTicketData({ ...ticketData, ticketType: "Regular" })
-              }
-              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer"
+              onClick={() => {
+                setTicketData({ ...ticketData, ticketType: "Regular" });
+                changeColor("Regular");
+              }}
+              className={`border-2 border-[#197686] rounded-[12px] px-3 py-2 cursor-pointer ${
+                ticketData.ticketType === "Regular"
+                  ? "bg-[#197686] text-white"
+                  : "border-[#197686] hover:bg-[#197686]"
+              }`}
             >
               <h2 className="font-semibold text-lg sm:text-xl">Free</h2>
               <h4 className="uppercase text-sm sm:text-base">Regular Access</h4>
@@ -56,7 +65,11 @@ const Form = () => {
               onClick={() =>
                 setTicketData({ ...ticketData, ticketType: "VIP" })
               }
-              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer"
+              className={`border-2 border-[#197686] rounded-[12px] px-3 py-2 cursor-pointer ${
+                ticketData.ticketType === "VIP"
+                  ? "bg-[#197686] text-white"
+                  : "border-[#197686] hover:bg-[#197686]"
+              }`}
             >
               <h2 className="font-semibold text-lg sm:text-xl">$150</h2>
               <h4 className="uppercase text-sm sm:text-base">VIP Access</h4>
@@ -67,7 +80,11 @@ const Form = () => {
               onClick={() =>
                 setTicketData({ ...ticketData, ticketType: "VVIP" })
               }
-              className="border-2 border-[#197686] rounded-[12px] px-3 py-2 hover:bg-[#197686] cursor-pointer"
+              className={`border-2 border-[#197686] rounded-[12px] px-3 py-2 cursor-pointer ${
+                ticketData.ticketType === "VVIP"
+                  ? "bg-[#197686] text-white"
+                  : "border-[#197686] hover:bg-[#197686]"
+              }`}
             >
               <h2 className="font-semibold text-lg sm:text-xl">$150</h2>
               <h4 className="uppercase text-sm sm:text-base">VVIP Access</h4>
@@ -85,11 +102,11 @@ const Form = () => {
                 ticketCount: Number(e.target.value),
               })
             }
-            className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base"
+            className="outline-0 bg-[#08252B] border border-liner p-2 rounded-lg text-sm sm:text-base"
             required
           >
             {Array.from({ length: 20 }, (_, i) => i + 1).map((num, index) => (
-              <option key={index} value={num}>
+              <option className="" key={index} value={num}>
                 {num}
               </option>
             ))}
@@ -97,12 +114,12 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between w-full gap-3">
-          <button className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5] active:bg-[#24A0B5]">
+          <button className="border border-[#24A0B5] font-jeju font-light text-[#24A0B5] hover:text-white w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5] active:bg-[#24A0B5]">
             Cancel
           </button>
           <button
             onClick={() => navigate("/generate")}
-            className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5] active:bg-[#24A0B5]"
+            className="border border-[#24A0B5] font-jeju font-light text-[#24A0B5] hover:text-white w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5] active:bg-[#24A0B5]"
           >
             Next
           </button>

@@ -3,6 +3,7 @@ import { CloudArrowDownIcon } from "@heroicons/react/24/outline";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useFormContent } from "../Context/FormContent";
+import axios from "axios";
 
 const Attendee = () => {
   const navigate = useNavigate();
@@ -13,10 +14,31 @@ const Attendee = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    setFormData(data);
-    navigate("/ticket");
+  const onSubmit = async (data) => {
+    const fileInput = document.getElementById("fileInput").files[0];
+
+    if (fileInput) {
+      const formData = new FormData();
+      formData.append("file", fileInput);
+      formData.append("upload_preset", "HNG profile photos");
+
+      try {
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/drbi9pu6v/image/upload`,
+          formData
+        );
+        const imageURL = response.data.secure_url;
+        console.log("Uploaded Image URL:", imageURL);
+        setFormData({ ...data, profilePhoto: imageURL });
+        navigate("/ticket");
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    } else {
+      console.log("form data", data);
+      setFormData(data);
+      navigate('/ticket')
+    }
   };
 
   return (
@@ -63,7 +85,7 @@ const Attendee = () => {
             </div>
           </div>
           {errors.profilePhoto && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="text-red-500 text-sm mt-6">
               {errors.profilePhoto.message}
             </p>
           )}
@@ -73,7 +95,7 @@ const Attendee = () => {
         <div className="flex flex-col my-3">
           <label className="text-sm sm:text-base mb-1">Enter your name</label>
           <input
-            className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
+            className="outline-0 bg-[#08252B] border border-liner  p-2 rounded-lg text-sm sm:text-base mb-1"
             type="text"
             aria-label="Enter your name"
             {...register("name", { required: "Please enter your name" })}
@@ -86,7 +108,7 @@ const Attendee = () => {
             Enter your email *
           </label>
           <input
-            className="border border-[#07373f] p-2 rounded-lg text-sm sm:text-base mb-1"
+            className="outline-0 bg-[#08252B] border border-liner p-2 rounded-lg text-sm sm:text-base mb-1"
             type="email"
             placeholder="hello@avioflagos.io"
             aria-label="Enter your email"
@@ -115,13 +137,13 @@ const Attendee = () => {
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
+            className="border border-[#24A0B5] text-[#24A0B5] hover:text-white font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
           >
             Back
           </button>
           <button
             type="submit"
-            className="border border-[#24A0B5] font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
+            className="border border-[#24A0B5] text-[#24A0B5] hover:text-white font-jeju font-light w-full sm:w-[48%] py-2 rounded-md cursor-pointer hover:bg-[#24A0B5]"
           >
             Get My Free Ticket
           </button>
