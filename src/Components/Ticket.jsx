@@ -31,7 +31,7 @@ const Ticket = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center p-6  w-full ">
-        <div className="max-w-[300px] h-[600px]  rounded-[20px] path w-full mx-auto border border-liner p-4 md:p-0 ">
+        <div className="max-w-[300px] h-[600px] bg-linear-to-b from-[#2c5f6a] via-[#102a30] to-[#1b3f47] rounded-[20px] path w-full mx-auto border border-liner p-4 md:p-0 ">
           <div className="max-w-[260px] w-full h-[446px] border border-[#24A0B5] mx-auto mt-5 rounded-[16px] p-2 ">
             <div className="  flex flex-col justify-center items-center py-4 px-5 sm:py-5 sm:px-7 rounded-[20px]">
               <h2 className="text-center text-3xl sm:text-4xl leading-tight font-rage">
@@ -43,7 +43,7 @@ const Ticket = () => {
               <p className="text-center text-xs">March 15, 2025 || 7:00PM</p>
             </div>
 
-            <div className="w-32 h-32 overflow-hidden mb-4 mx-auto border-5 border-[#7efcfc] ">
+            <div className="w-32 h-32 overflow-hidden mb-4 mx-auto border-5 border-[#7efcfc] rounded-2xl">
               {formData.profilePhoto ? (
                 <img src={formData.profilePhoto} />
               ) : (
